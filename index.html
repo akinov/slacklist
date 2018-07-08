@@ -15,26 +15,29 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/siimple@3.0.0/dist/siimple.min.css">
+  <link rel="stylesheet" href="siimple.min.css">
 </head>
 <body>
 <div class="siimple-content siimple-content--large siimple-content--grey">
   <div class="siimple-h1" align="center">Slack List Jp</div>
   <p class="siimple-h5" align="center">厳選されたSlackワークスペースをご紹介</p>
 
-  <div class="siimple-p" align="center"><a href="" target="_blank" class="siimple-link"><small class="siimple-small">あなたのワークスペースを登録しませんか？</small></a></div>
+  <div class="siimple-p" align="center"><a href="" target="_blank" class="siimple-link siimple-small">あなたのワークスペースを登録しませんか？</a></div>
 
   <div id="v-list">
-    <ul v-for="category in categories">
-      <li v-on:click="selectCategory(category.id)">{{ category.name }}</li>
-    </ul>
+    <!--<div class="siimple-tabs">-->
+      <!--<div class="siimple-tabs-tab" v-for="category in categories" v-on:click="selectCategory(category.id)" v-bind:class="{ 'siimple-tabs-tab&#45;&#45;selected': (category.id == selectedCategoryId) }">{{ category.name }}</div>-->
+    <!--</div>-->
     <div class="siimple-grid">
       <div class="siimple-grid-row">
         <div class="siimple-grid-col siimple-grid-col--4 siimple-grid-col-lg--6 siimple-grid-col-md--12" v-for="workspace in workspaces">
           <div class="siimple-box">
-            <div class="siimple-box-title">{{ workspace.name }}</div>
-            <div class="siimple-box-subtitle">This is the box subtitle</div>
-            <div class="siimple-box-detail">{{ workspace.description }}</div>
+            <div class="siimple-h4">{{ workspace.name }}</div>
+            <div class="siimple-small">{{ workspace.subtitle }}</div>
+            <div style="white-space: pre-line;">{{ workspace.description }}</div>
+            <div class="siimple--clearfix">
+              <div class="siimple--float-right siimple-btn siimple-btn--teal" v-bind:href="workspace.url" target="_blank">Join</div>
+            </div>
           </div>
         </div>
       </div>
